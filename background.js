@@ -45,3 +45,5 @@ chrome.runtime.onSuspend.addListener(() => {
   // Stop the timer when the extension is suspended (e.g. when the browser is closed)
   stopTimer();
 });
+
+chrome.action.onClicked.addListener(function(tab) { getWebsiteStatus() });
