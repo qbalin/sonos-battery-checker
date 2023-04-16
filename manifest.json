@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Sonos battery checker",
+  "version": "1.0",
+  "description": "Periodically checks the batterry status of a sonos speaker and displays a badge with its percentage.",
+  "icons": {
+    "16": "16.png",
+    "32": "32.png",
+    "48": "48.png",
+    "128": "128.png"
+  },
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://*/*"
+  ],
+  "action": {
+    "default_icon": "32.png",
+    "badge": {
+      "color": "#f00",
+      "text": "0"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}
