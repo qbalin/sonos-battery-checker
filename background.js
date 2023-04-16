@@ -36,9 +36,7 @@ function stopTimer() {
 
 chrome.runtime.onInstalled.addListener(async () => {
   // Start the timer when the extension is installed or updated
-  chrome.action.setBadgeBackgroundColor({ color: 'lightgrey'})
-  const batteryLevel = await chrome.storage.local.get('batteryLevel');
-  chrome.action.setBadgeText({ text: batteryLevel?.batteryLevel || '...' });
+  chrome.action.setBadgeText({ text: '...' });
   getWebsiteStatus();
   startTimer();
 });
