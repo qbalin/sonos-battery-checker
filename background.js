@@ -35,6 +35,7 @@ function stopTimer() {
 
 chrome.runtime.onInstalled.addListener(() => {
   // Start the timer when the extension is installed or updated
+  getWebsiteStatus();
   startTimer();
 });
 
