@@ -16,6 +16,7 @@ function getWebsiteStatus() {
         chrome.action.setBadgeBackgroundColor({ color: 'lightcoral'})
       }
       chrome.action.setBadgeText({ text: batteryLevel });
+      chrome.storage.local.set({ batteryLevel });
     })
     .catch(error => {
       chrome.action.setBadgeBackgroundColor({ color: 'lightgrey'});
@@ -33,10 +34,11 @@ function stopTimer() {
   clearInterval(timerId);
 }
 
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onInstalled.addListener(async () => {
   // Start the timer when the extension is installed or updated
   chrome.action.setBadgeBackgroundColor({ color: 'lightgrey'})
-  chrome.action.setBadgeText({ text: '...' });
+  const batteryLevel = await chrome.storage.local.get('batteryLevel');
+  chrome.action.setBadgeText({ text: batteryLevel?.batteryLevel || '...' });
   getWebsiteStatus();
   startTimer();
 });
@@ -47,3 +49,9 @@ chrome.runtime.onSuspend.addListener(() => {
 });
 
 chrome.action.onClicked.addListener(function(tab) { getWebsiteStatus() });
+
+(async () => {
+  chrome.action.setBadgeBackgroundColor({ color: 'lightgrey'})
+  const batteryLevel = await chrome.storage.local.get('batteryLevel');
+  chrome.action.setBadgeText({ text: batteryLevel?.batteryLevel || '...' });
+})()
