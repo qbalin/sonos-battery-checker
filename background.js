@@ -18,7 +18,7 @@ function getWebsiteStatus() {
       chrome.action.setBadgeText({ text: batteryLevel });
     })
     .catch(error => {
-      browser.browserAction.setBadgeBackgroundColor({ color: 'grey'})
+      chrome.action.setBadgeBackgroundColor({ color: 'lightgrey'});
       console.error('Error fetching website status:', error);
     });
 }
@@ -35,6 +35,8 @@ function stopTimer() {
 
 chrome.runtime.onInstalled.addListener(() => {
   // Start the timer when the extension is installed or updated
+  chrome.action.setBadgeBackgroundColor({ color: 'lightgrey'})
+  chrome.action.setBadgeText({ text: '...' });
   getWebsiteStatus();
   startTimer();
 });
