@@ -25,7 +25,7 @@ function getWebsiteStatus() {
 
 function startTimer() {
   // Set up a timer to periodically check the website status
-  timerId = setInterval(getWebsiteStatus, 3000); // Check every 1 minute
+  timerId = setInterval(getWebsiteStatus, 60000); // Check every 1 minute
 }
 
 function stopTimer() {
