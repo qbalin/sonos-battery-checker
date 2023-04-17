@@ -13,6 +13,14 @@ Boilerplate code generate by ChatGPT.
 6. On the chrome the extension page, Load Unpacked -> path to the unziped repo
 
 # What does it do?
-Nearly nothing. It just displays the last battery level as a badge on the extension icon:
+Nearly nothing. It just checks for the battery level every minute and displays it as a badge on the extension icon:
 
 <img width="32" alt="Screenshot 2023-04-16 at 6 26 05 PM" src="https://user-images.githubusercontent.com/10332573/232346090-86baa31a-3b13-4b87-b629-727b6430a5a9.png">
+
+Click on the extension button for immediate refresh.
+
+Statuses:
+- grey: last known battery level. Coult not connect to device status page (device offline, probably)
+- green: more than 66% of battery
+- yellow: between 33% and 66% of battery
+- red: less than 33% of battery
