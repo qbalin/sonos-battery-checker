@@ -7,10 +7,10 @@ Boilerplate code generate by ChatGPT.
 
 1. Find the IP address of your Sonos speaker
 2. Replace the address in background.js with it
-3. Load the app in chrome naivgating to chrome://extensions/
-4. Turn on developer mode (top right corner)
-5. [Download the repo](https://github.com/qbalin/sonos-battery-checker/archive/refs/heads/main.zip)
-6. On the chrome the extension page, Load Unpacked -> path to the unziped repo
+3. [Download the repo](https://github.com/qbalin/sonos-battery-checker/archive/refs/heads/main.zip) and unzip it
+4. Navigate to chrome://extensions/
+5. Turn on developer mode (top right corner)
+6. Load Unpacked -> path to the unziped repo
 
 # What does it do?
 Nearly nothing. It just checks for the battery level every minute and displays it as a badge on the extension icon:
