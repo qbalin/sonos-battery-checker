@@ -1,9 +1,23 @@
 let timerId;
 
+async function fetchWithTimeout(resource, options = {}) {
+  const { timeout = 1000 } = options;
+
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  const response = await fetch(resource, {
+    ...options,
+    signal: controller.signal
+  });
+  clearTimeout(id);
+  return response;
+}
+
 function getWebsiteStatus() {
   // Make a request to the website to get its status
-  fetch('http://192.168.1.161:1400/status/batterystatus')
-    .then(response => response.text())
+  const request = fetchWithTimeout('http://192.168.1.161:1400/status/batterystatus');
+  // throw new Error(response)
+  request.then(response => response.text())
     .then(xmlStr => {
       const batteryLevel = xmlStr.match(/<Data name="Level">(.*?)<\/Data>/)[1];
       
